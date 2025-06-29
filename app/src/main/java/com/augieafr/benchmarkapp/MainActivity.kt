@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
             BenchmarkAppTheme {
                 val navController = rememberNavController()
                 val currentBackStackEntry by navController.currentBackStackEntryAsState()
-                var title by remember { mutableStateOf("Benchmark App") }
+                var title: String? by remember { mutableStateOf("Benchmark App") }
 
                 // Update title based on current destination
                 LaunchedEffect(currentBackStackEntry) {
@@ -41,15 +41,17 @@ class MainActivity : ComponentActivity() {
                         MainRoute.BenchmarkOption.route -> "Benchmark App"
                         MainRoute.ScrollTest.route -> "Scroll Test"
                         MainRoute.DatabaseOperationTest.route -> "Database Operation Test"
-                        MainRoute.AnimationTest.route -> "Animation Test"
+                        MainRoute.AnimationTest.route -> null
                         else -> "Benchmark App"
                     }
                 }
 
                 Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
-                    TopAppBar(title = {
-                        Text(title)
-                    })
+                    title?.let {
+                        TopAppBar(title = {
+                            Text(it)
+                        })
+                    }
                 }) { innerPadding ->
                     MainNavHost(
                         modifier = Modifier
