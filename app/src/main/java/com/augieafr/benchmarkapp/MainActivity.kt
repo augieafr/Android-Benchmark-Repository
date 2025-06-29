@@ -40,6 +40,8 @@ class MainActivity : ComponentActivity() {
                     title = when (route) {
                         MainRoute.BenchmarkOption.route -> "Benchmark App"
                         MainRoute.ScrollTest.route -> "Scroll Test"
+                        MainRoute.DatabaseOperationTest.route -> "Database Operation Test"
+                        MainRoute.AnimationTest.route -> "Animation Test"
                         else -> "Benchmark App"
                     }
                 }

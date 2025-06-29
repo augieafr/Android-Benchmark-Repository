@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.augieafr.benchmarkapp.ui.navigation.route.MainRoute
 import com.augieafr.benchmarkapp.ui.screen.BenchmarkOptionScreen
+import com.augieafr.benchmarkapp.ui.screen.database_operation_test.DatabaseOperationTestScreen
 import com.augieafr.benchmarkapp.ui.screen.scroll_test.ScrollTestScreen
 
 @Composable
@@ -29,6 +30,10 @@ fun MainNavHost(
 
         composable<MainRoute.ScrollTest> {
             ScrollTestScreen(modifier)
+        }
+
+        composable<MainRoute.DatabaseOperationTest> {
+            DatabaseOperationTestScreen(modifier)
         }
     }
 }
