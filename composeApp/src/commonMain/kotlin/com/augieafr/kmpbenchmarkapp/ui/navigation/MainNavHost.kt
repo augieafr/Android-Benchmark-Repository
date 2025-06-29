@@ -9,12 +9,12 @@ import androidx.navigation.compose.rememberNavController
 import com.augieafr.kmpbenchmarkapp.ui.navigation.route.MainRoute
 import com.augieafr.kmpbenchmarkapp.ui.screen.BenchmarkOptionScreen
 import com.augieafr.kmpbenchmarkapp.ui.screen.animation_test.AnimationTestScreen
+import com.augieafr.kmpbenchmarkapp.ui.screen.database_operation_test.DatabaseOperationTestScreen
 
 @Composable
 fun MainNavHost(
     modifier: Modifier = Modifier,
-    navController: NavHostController = rememberNavController(),
-    setTitle: (String) -> Unit
+    navController: NavHostController = rememberNavController()
 ) {
     NavHost(
         modifier = Modifier,
@@ -30,10 +30,10 @@ fun MainNavHost(
 //        composable<MainRoute.ScrollTest> {
 //            ScrollTestScreen(modifier)
 //        }
-//
-//        composable<MainRoute.DatabaseOperationTest> {
-//            DatabaseOperationTestScreen(modifier)
-//        }
+
+        composable<MainRoute.DatabaseOperationTest> {
+            DatabaseOperationTestScreen(modifier)
+        }
 
         composable<MainRoute.AnimationTest> {
             AnimationTestScreen(modifier)
