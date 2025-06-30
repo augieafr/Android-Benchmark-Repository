@@ -10,6 +10,7 @@ import com.augieafr.kmpbenchmarkapp.ui.navigation.route.MainRoute
 import com.augieafr.kmpbenchmarkapp.ui.screen.BenchmarkOptionScreen
 import com.augieafr.kmpbenchmarkapp.ui.screen.animation_test.AnimationTestScreen
 import com.augieafr.kmpbenchmarkapp.ui.screen.database_operation_test.DatabaseOperationTestScreen
+import com.augieafr.kmpbenchmarkapp.ui.screen.scroll_test.ScrollTestScreen
 
 @Composable
 fun MainNavHost(
@@ -27,9 +28,9 @@ fun MainNavHost(
             }
         }
 
-//        composable<MainRoute.ScrollTest> {
-//            ScrollTestScreen(modifier)
-//        }
+        composable<MainRoute.ScrollTest> {
+            ScrollTestScreen(modifier)
+        }
 
         composable<MainRoute.DatabaseOperationTest> {
             DatabaseOperationTestScreen(modifier)

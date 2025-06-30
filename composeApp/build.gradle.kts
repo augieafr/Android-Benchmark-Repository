@@ -37,6 +37,7 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
+            implementation(libs.ktor.client.okhttp)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -62,6 +63,16 @@ kotlin {
             api(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.composeVM)
+
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.ktor.content.negotiation)
+            implementation(libs.ktor.client.core)
+
+            implementation(libs.paging.common)
+            implementation(libs.paging.compose.common)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -107,4 +118,3 @@ android {
 dependencies {
     debugImplementation(compose.uiTooling)
 }
-
