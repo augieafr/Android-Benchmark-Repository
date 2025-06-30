@@ -20,7 +20,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedButton
@@ -95,13 +94,7 @@ fun AnimationTestScreen(modifier: Modifier = Modifier) {
                 isAnimating = true
                 animationStarted = true
             },
-            onResetAnimation = {
-                isAnimating = false
-                animationStarted = false
-                completedAnimations = 0
-            },
-            isAnimating = isAnimating,
-            canReset = animationStarted && !isAnimating
+            isAnimating = isAnimating
         )
 
         LargeSpace()
@@ -205,9 +198,7 @@ private fun AnimationHeaderSection(
 @Composable
 private fun AnimationActionButtons(
     onStartAnimation: () -> Unit,
-    onResetAnimation: () -> Unit,
-    isAnimating: Boolean,
-    canReset: Boolean
+    isAnimating: Boolean
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(12.dp)
@@ -224,21 +215,6 @@ private fun AnimationActionButtons(
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text("Start Animation Performance Test")
-        }
-
-        // Reset Button
-        if (canReset) {
-            ElevatedButton(
-                onClick = onResetAnimation,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Refresh,
-                    contentDescription = null
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text("Reset Animation")
-            }
         }
 
         // Show explanation when animating

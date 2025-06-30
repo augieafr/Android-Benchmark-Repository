@@ -1,7 +1,7 @@
 package com.augieafr.benchmarkapp.ui.screen.database_operation_test
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.augieafr.benchmarkapp.data.local.room.AppDatabase
 import com.augieafr.benchmarkapp.data.model.entity.NoteEntity
@@ -23,7 +23,7 @@ data class DatabaseBenchmarkResult(
 
 class DatabaseOperationTestViewModel(
     application: Application
-) : AndroidViewModel(application) {
+) : ViewModel() {
 
     // Create NoteRepository inside the class
     private val database = AppDatabase.getDatabase(application)

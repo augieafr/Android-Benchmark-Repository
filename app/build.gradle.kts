@@ -72,7 +72,6 @@ dependencies {
     implementation(libs.retrofit.converter.serialization)
 
     ksp(libs.room.compiler)
-    implementation(libs.room.paging)
     implementation(libs.room.ktx)
 
     implementation(libs.paging.compose)
