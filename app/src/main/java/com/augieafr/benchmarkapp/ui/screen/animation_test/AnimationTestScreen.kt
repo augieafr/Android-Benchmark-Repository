@@ -10,13 +10,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
@@ -29,6 +27,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -47,7 +46,6 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.augieafr.benchmarkapp.R
-import com.augieafr.benchmarkapp.ui.component.LargeSpace
 import com.augieafr.benchmarkapp.ui.component.MediumSpace
 import kotlin.math.roundToInt
 
@@ -55,7 +53,7 @@ import kotlin.math.roundToInt
 fun AnimationTestScreen(modifier: Modifier = Modifier) {
     var isAnimating by remember { mutableStateOf(false) }
     var animationStarted by remember { mutableStateOf(false) }
-    var completedAnimations by remember { mutableStateOf(0) }
+    var completedAnimations by remember { mutableIntStateOf(0) }
     val totalAnimations = 20
 
     val allAnimationsComplete = completedAnimations >= totalAnimations
@@ -97,7 +95,7 @@ fun AnimationTestScreen(modifier: Modifier = Modifier) {
             isAnimating = isAnimating
         )
 
-        LargeSpace()
+        MediumSpace()
 
         // Animation Container
         AnimationContainer(
@@ -178,7 +176,7 @@ private fun AnimationHeaderSection(
                                 shape = RoundedCornerShape(6.dp)
                             )
                     )
-                    Spacer(modifier = Modifier.width(8.dp))
+                    MediumSpace()
                     Text(
                         text = when {
                             isAnimating -> "Animating"
@@ -213,7 +211,7 @@ private fun AnimationActionButtons(
                 imageVector = Icons.Default.PlayArrow,
                 contentDescription = null
             )
-            Spacer(modifier = Modifier.width(8.dp))
+            MediumSpace()
             Text("Start Animation Performance Test")
         }
 
@@ -363,7 +361,7 @@ private fun AnimatedCard(
             verticalArrangement = Arrangement.Center
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                painter = painterResource(R.drawable.ic_android_24dp),
                 contentDescription = "Card ${index + 1}",
                 modifier = Modifier.size(32.dp)
             )

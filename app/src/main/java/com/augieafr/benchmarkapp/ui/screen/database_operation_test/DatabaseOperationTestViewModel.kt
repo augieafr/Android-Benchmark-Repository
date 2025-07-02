@@ -72,7 +72,11 @@ class DatabaseOperationTestViewModel(
             val readResult = benchmarkReadOperation()
             results.add(readResult)
 
-            // Test 5: Delete all notes
+            // Test 3: Update notes
+            val updateResult = benchmarkUpdateOperation()
+            results.add(updateResult)
+
+            // Test 4: Delete all notes
             val deleteResult = benchmarkDeleteOperation()
             results.add(deleteResult)
 
@@ -108,6 +112,33 @@ class DatabaseOperationTestViewModel(
             operation = "Read All Notes",
             duration = duration,
             recordCount = notes.size,
+            status = "Success"
+        )
+    }
+
+    private suspend fun benchmarkUpdateOperation(): DatabaseBenchmarkResult {
+        val startTime = System.currentTimeMillis()
+
+        // Get all existing notes from database
+        val existingNotes = noteRepository.getAllNotes().first()
+
+        // Create updated versions of the notes with modified titles and descriptions
+        val updatedNotes = existingNotes.map { note ->
+            note.copy(
+                title = "${note.title} - UPDATED",
+                description = "${note.description} [UPDATED at ${System.currentTimeMillis()}]",
+                timestamp = System.currentTimeMillis()
+            )
+        }
+
+        // Perform the update operation
+        noteRepository.updateNotes(updatedNotes)
+        val duration = System.currentTimeMillis() - startTime
+
+        return DatabaseBenchmarkResult(
+            operation = "Update ${updatedNotes.size} Notes",
+            duration = duration,
+            recordCount = updatedNotes.size,
             status = "Success"
         )
     }

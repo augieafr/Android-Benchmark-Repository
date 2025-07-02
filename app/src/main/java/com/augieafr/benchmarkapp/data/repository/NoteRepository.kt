@@ -22,6 +22,14 @@ class NoteRepository(private val noteDao: NoteDao) {
     }
 
     /**
+     * Update a specific list of NoteEntity in the database
+     * @param notes List of NoteEntity to be updated
+     */
+    suspend fun updateNotes(notes: List<NoteEntity>) {
+        noteDao.updateNotes(notes)
+    }
+
+    /**
      * Delete all notes from the database
      */
     suspend fun deleteAllNotes() {

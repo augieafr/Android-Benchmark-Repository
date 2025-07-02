@@ -4,10 +4,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -37,6 +35,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.augieafr.benchmarkapp.ui.component.MediumSpace
+import com.augieafr.benchmarkapp.ui.component.SmallSpace
 
 @Composable
 fun DatabaseOperationTestScreen(
@@ -131,13 +131,8 @@ private fun DatabaseHeaderSection(
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                 )
-                Text(
-                    text = "Total Notes: $totalNotes",
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onPrimaryContainer
-                )
 
-                Spacer(modifier = Modifier.height(4.dp))
+                SmallSpace()
 
                 // Benchmark Status
                 val statusText = if (notesGenerated) {
@@ -187,7 +182,7 @@ private fun DatabaseActionButtons(
                 imageVector = Icons.Default.PlayArrow,
                 contentDescription = null
             )
-            Spacer(modifier = Modifier.width(8.dp))
+            MediumSpace()
             Text("Run Full Database Benchmark")
         }
 
@@ -253,7 +248,7 @@ private fun BenchmarkResultCard(result: DatabaseBenchmarkResult) {
                 )
             }
 
-            Spacer(modifier = Modifier.height(8.dp))
+            MediumSpace()
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -335,7 +330,7 @@ private fun EmptyStateSection() {
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            MediumSpace()
             Text(
                 text = "No benchmark results yet",
                 style = MaterialTheme.typography.bodyLarge,
@@ -403,7 +398,7 @@ private fun NotesCountInputSection(
                         imageVector = Icons.Default.Add,
                         contentDescription = null
                     )
-                    Spacer(modifier = Modifier.width(4.dp))
+                    SmallSpace()
                     Text("Generate")
                 }
             }
@@ -427,7 +422,7 @@ private fun LoadingSection() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             CircularProgressIndicator()
-            Spacer(modifier = Modifier.height(8.dp))
+            MediumSpace()
             Text(
                 text = "Running database operations...",
                 style = MaterialTheme.typography.bodyMedium,
