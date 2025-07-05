@@ -17,8 +17,8 @@ class UnsplashRepository {
 
     fun getPhotos(): Flow<PagingData<UnsplashResponse>> = Pager(
         config = PagingConfig(
-            pageSize = 10,
-            initialLoadSize = 10
+            pageSize = 20,
+            initialLoadSize = 20
         ),
         pagingSourceFactory = {
             UnsplashPagingSource(unsplashApiClient)

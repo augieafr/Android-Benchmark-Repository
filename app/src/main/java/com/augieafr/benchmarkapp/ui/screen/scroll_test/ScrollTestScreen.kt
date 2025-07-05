@@ -36,6 +36,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -59,7 +60,9 @@ fun ScrollTestScreen(
     val photos = viewModel.photos.collectAsLazyPagingItems()
 
     LazyColumn(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier
+            .fillMaxSize()
+            .testTag("scroll_container"),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(
@@ -85,7 +88,8 @@ fun ScrollTestScreen(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(16.dp),
+                            .padding(16.dp)
+                            .testTag("loading_indicator"),
                         contentAlignment = Alignment.Center
                     ) {
                         CircularProgressIndicator()

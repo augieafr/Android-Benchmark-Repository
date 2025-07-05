@@ -41,7 +41,7 @@ class DatabaseOperationTestViewModel(
     private val _errorMessage = MutableStateFlow<String?>(null)
     val errorMessage = _errorMessage.asStateFlow()
 
-    private val _randomNotesCount = MutableStateFlow(1000)
+    private val _randomNotesCount = MutableStateFlow(0)
     val randomNotesCount = _randomNotesCount.asStateFlow()
 
     private val _notesGenerated = MutableStateFlow(false)
