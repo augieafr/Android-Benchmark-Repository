@@ -18,13 +18,13 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.augieafr.kmpbenchmarkapp.ui.navigation.MainNavHost
 import com.augieafr.kmpbenchmarkapp.ui.navigation.route.MainRoute
-import com.augieafr.kmpbenchmarkapp.utils.route
+import com.augieafr.kmpbenchmarkapp.ui.navigation.route.route
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
-fun App() {
+fun App(modifier: Modifier = Modifier) {
     MaterialTheme {
         val navController = rememberNavController()
         val currentBackStackEntry by navController.currentBackStackEntryAsState()
@@ -42,7 +42,7 @@ fun App() {
             }
         }
 
-        Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
+        Scaffold(modifier = modifier.fillMaxSize(), topBar = {
             title?.let {
                 TopAppBar(title = {
                     Text(it)

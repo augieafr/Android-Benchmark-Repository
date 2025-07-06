@@ -1,7 +1,6 @@
 package com.augieafr.kmpbenchmarkapp.data.local.room.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -18,8 +17,8 @@ interface NoteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNotes(notes: List<NoteEntity>)
 
-    @Delete
-    suspend fun deleteNote(note: NoteEntity)
+    @Update
+    suspend fun updateNotes(notes: List<NoteEntity>)
 
     @Query("DELETE FROM notes")
     suspend fun deleteAllNotes()

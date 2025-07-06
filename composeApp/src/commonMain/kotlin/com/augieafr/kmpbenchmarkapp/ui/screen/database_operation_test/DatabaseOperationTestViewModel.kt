@@ -12,6 +12,8 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 import kotlin.time.TimeSource
 
 data class DatabaseBenchmarkResult(
@@ -37,7 +39,7 @@ class DatabaseOperationTestViewModel(
     private val _errorMessage = MutableStateFlow<String?>(null)
     val errorMessage = _errorMessage.asStateFlow()
 
-    private val _randomNotesCount = MutableStateFlow(1000)
+    private val _randomNotesCount = MutableStateFlow(0)
     val randomNotesCount = _randomNotesCount.asStateFlow()
 
     private val _notesGenerated = MutableStateFlow(false)
@@ -68,7 +70,11 @@ class DatabaseOperationTestViewModel(
             val readResult = benchmarkReadOperation()
             results.add(readResult)
 
-            // Test 5: Delete all notes
+            // Test 3: Update notes
+            val updateResult = benchmarkUpdateOperation()
+            results.add(updateResult)
+
+            // Test 4: Delete all notes
             val deleteResult = benchmarkDeleteOperation()
             results.add(deleteResult)
 
@@ -104,6 +110,36 @@ class DatabaseOperationTestViewModel(
             operation = "Read All Notes",
             duration = duration.inWholeMilliseconds,
             recordCount = notes.size,
+            status = "Success"
+        )
+    }
+
+    @OptIn(ExperimentalTime::class)
+    private suspend fun benchmarkUpdateOperation(): DatabaseBenchmarkResult {
+        val startTime = TimeSource.Monotonic.markNow()
+
+        // Get all existing notes from database
+        val existingNotes = noteRepository.getAllNotes().first()
+
+        // Create updated versions of the notes with modified titles and descriptions
+        val updatedNotes = existingNotes.map { note ->
+            note.copy(
+                title = "${note.title} - UPDATED",
+                description = "${note.description} [UPDATED at ${
+                    Clock.System.now().toEpochMilliseconds()
+                }}}]",
+                timestamp = Clock.System.now().toEpochMilliseconds()
+            )
+        }
+
+        // Perform the update operation
+        noteRepository.updateNotes(updatedNotes)
+        val duration = TimeSource.Monotonic.markNow() - startTime
+
+        return DatabaseBenchmarkResult(
+            operation = "Update ${updatedNotes.size} Notes",
+            duration = duration.inWholeMilliseconds,
+            recordCount = updatedNotes.size,
             status = "Success"
         )
     }
