@@ -15,3 +15,6 @@ sealed class MainRoute {
     @Serializable
     data object AnimationTest : MainRoute()
 }
+
+val MainRoute.route: String?
+    get() = this::class.qualifiedName

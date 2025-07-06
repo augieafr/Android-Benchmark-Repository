@@ -22,8 +22,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.augieafr.benchmarkapp.ui.navigation.MainNavHost
 import com.augieafr.benchmarkapp.ui.navigation.route.MainRoute
+import com.augieafr.benchmarkapp.ui.navigation.route.route
 import com.augieafr.benchmarkapp.ui.theme.BenchmarkAppTheme
-import com.augieafr.benchmarkapp.utils.route
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
