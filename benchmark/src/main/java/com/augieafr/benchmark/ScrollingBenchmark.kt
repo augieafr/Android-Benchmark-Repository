@@ -1,6 +1,8 @@
 package com.augieafr.benchmark
 
+import androidx.benchmark.macro.ExperimentalMetricApi
 import androidx.benchmark.macro.FrameTimingMetric
+import androidx.benchmark.macro.MemoryUsageMetric
 import androidx.benchmark.macro.StartupMode
 import androidx.benchmark.macro.junit4.MacrobenchmarkRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -16,11 +18,12 @@ class ScrollingBenchmark {
     @get:Rule
     val benchmarkRule = MacrobenchmarkRule()
 
+    @OptIn(ExperimentalMetricApi::class)
     @Test
-    fun simpleAnimationPerformanceTest() = benchmarkRule.measureRepeated(
+    fun scrollingPerformanceTest() = benchmarkRule.measureRepeated(
         packageName = "com.augieafr.benchmarkapp",
-        metrics = listOf(FrameTimingMetric()),
-        iterations = 10,
+        metrics = listOf(FrameTimingMetric(), MemoryUsageMetric(MemoryUsageMetric.Mode.Last)),
+        iterations = 30,
         startupMode = StartupMode.WARM,
         setupBlock = {
             killProcess()

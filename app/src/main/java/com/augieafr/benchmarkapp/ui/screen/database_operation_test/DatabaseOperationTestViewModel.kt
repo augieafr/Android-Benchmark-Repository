@@ -94,7 +94,7 @@ class DatabaseOperationTestViewModel(
         val startTime = System.currentTimeMillis()
         noteRepository.addNotes(listNote) // Insert random notes
         val duration = System.currentTimeMillis() - startTime
-
+        println("Insert: $duration")
         return DatabaseBenchmarkResult(
             operation = "Insert ${listNote.size} Notes",
             duration = duration,
@@ -107,6 +107,7 @@ class DatabaseOperationTestViewModel(
         val startTime = System.currentTimeMillis()
         val notes = noteRepository.getAllNotes().first()
         val duration = System.currentTimeMillis() - startTime
+        println("Read: $duration")
 
         return DatabaseBenchmarkResult(
             operation = "Read All Notes",
@@ -134,7 +135,7 @@ class DatabaseOperationTestViewModel(
         // Perform the update operation
         noteRepository.updateNotes(updatedNotes)
         val duration = System.currentTimeMillis() - startTime
-
+        println("Update: $duration")
         return DatabaseBenchmarkResult(
             operation = "Update ${updatedNotes.size} Notes",
             duration = duration,
@@ -147,7 +148,7 @@ class DatabaseOperationTestViewModel(
         val startTime = System.currentTimeMillis()
         noteRepository.deleteAllNotes()
         val duration = System.currentTimeMillis() - startTime
-
+        println("Delete: $duration")
         return DatabaseBenchmarkResult(
             operation = "Delete All Notes",
             duration = duration,

@@ -15,6 +15,14 @@
       </SelectionState>
       <SelectionState runConfigName="AnimationBenchmark">
         <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2025-07-07T07:13:54.555184Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=32215614023244" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
       <SelectionState runConfigName="simpleAnimationPerformanceTest()">
         <option name="selectionMode" value="DROPDOWN" />
@@ -35,6 +43,14 @@
       </SelectionState>
       <SelectionState runConfigName="ScrollingBenchmark">
         <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2025-07-07T07:15:54.266703Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=32215614023244" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
     </selectionStates>
   </component>
