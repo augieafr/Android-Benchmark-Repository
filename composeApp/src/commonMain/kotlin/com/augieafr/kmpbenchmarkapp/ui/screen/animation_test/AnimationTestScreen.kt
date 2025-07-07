@@ -19,7 +19,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Animation
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -49,6 +48,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.augieafr.benchmarkapp.ui.component.LargeSpace
 import com.augieafr.benchmarkapp.ui.component.MediumSpace
+import kmpbenchmarkapp.composeapp.generated.resources.Res
+import kmpbenchmarkapp.composeapp.generated.resources.ic_android_24dp
+import org.jetbrains.compose.resources.painterResource
 import kotlin.math.roundToInt
 
 @Composable
@@ -363,7 +365,7 @@ private fun AnimatedCard(
             verticalArrangement = Arrangement.Center
         ) {
             Image(
-                imageVector = Icons.Default.Animation,
+                painterResource(Res.drawable.ic_android_24dp),
                 contentDescription = "Card ${index + 1}",
                 modifier = Modifier.size(32.dp)
             )

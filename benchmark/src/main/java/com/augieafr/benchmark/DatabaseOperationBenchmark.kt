@@ -1,8 +1,8 @@
 package com.augieafr.benchmark
 
 import androidx.benchmark.macro.ExperimentalMetricApi
+import androidx.benchmark.macro.MemoryUsageMetric
 import androidx.benchmark.macro.StartupMode
-import androidx.benchmark.macro.TraceSectionMetric
 import androidx.benchmark.macro.junit4.MacrobenchmarkRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -25,8 +25,8 @@ class DatabaseOperationBenchmark {
     @Test
     fun databaseOperationPerformanceTest() = benchmarkRule.measureRepeated(
         packageName = "com.augieafr.kmpbenchmarkapp",
-        metrics = listOf(TraceSectionMetric("addNotes")),
-        iterations = 10,
+        metrics = listOf(MemoryUsageMetric(MemoryUsageMetric.Mode.Last)),
+        iterations = 30,
         startupMode = StartupMode.WARM,
         setupBlock = {
             killProcess()

@@ -92,7 +92,7 @@ class DatabaseOperationTestViewModel(
         val startTime = TimeSource.Monotonic.markNow()
         noteRepository.addNotes(listNote) // Insert random notes
         val duration = TimeSource.Monotonic.markNow() - startTime
-
+        println("Insert: $duration")
         return DatabaseBenchmarkResult(
             operation = "Insert ${listNote.size} Notes",
             duration = duration.inWholeMilliseconds,
@@ -105,6 +105,7 @@ class DatabaseOperationTestViewModel(
         val startTime = TimeSource.Monotonic.markNow()
         val notes = noteRepository.getAllNotes().first()
         val duration = TimeSource.Monotonic.markNow() - startTime
+        println("Read: $duration")
 
         return DatabaseBenchmarkResult(
             operation = "Read All Notes",
@@ -135,6 +136,7 @@ class DatabaseOperationTestViewModel(
         // Perform the update operation
         noteRepository.updateNotes(updatedNotes)
         val duration = TimeSource.Monotonic.markNow() - startTime
+        println("Update: $duration")
 
         return DatabaseBenchmarkResult(
             operation = "Update ${updatedNotes.size} Notes",
@@ -148,6 +150,7 @@ class DatabaseOperationTestViewModel(
         val startTime = TimeSource.Monotonic.markNow()
         noteRepository.deleteAllNotes()
         val duration = TimeSource.Monotonic.markNow() - startTime
+        println("Delete: $duration")
 
         return DatabaseBenchmarkResult(
             operation = "Delete All Notes",
